@@ -18,3 +18,9 @@ virtual enviroment
 **Create a Requirements File**: List all your dependencies in a `requirements.txt` file to ensure they can be easily installed on the server.
 
 pip freeze > requirements.txt
+
+echo 'web: gunicorn -w 4 -b 0.0.0.0:10000 app:app' > Procfile
+
+## Git
+
+git push -u origin main
