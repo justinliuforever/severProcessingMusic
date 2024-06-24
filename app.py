@@ -1,12 +1,15 @@
 from flask import Flask, request, jsonify
 import requests
 import os
+import time
 from audio_processing import process_audio_file
 
 app = Flask(__name__)
 
 @app.route('/process_audio', methods=['POST'])
 def process_audio():
+    start_time = time.time()
+    
     data = request.json
     file_url = data.get('file_url')
     if not file_url:
@@ -27,6 +30,11 @@ def process_audio():
     finally:
         if os.path.exists(temp_file):
             os.remove(temp_file)
+
+    end_time = time.time()
+    processing_time = end_time - start_time
+    
+    result['processing_time_seconds'] = processing_time
 
     return jsonify(result)
 

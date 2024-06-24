@@ -24,3 +24,8 @@ echo 'web: gunicorn -w 4 -b 0.0.0.0:10000 app:app' > Procfile
 ## Git
 
 git push -u origin main
+
+## Render
+
+gunicorn -w 4 -b 0.0.0.0:10000 app:app
+
